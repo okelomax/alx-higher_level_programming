@@ -1,13 +1,10 @@
 #!/usr/bin/python3
-"""Module 0-lookup.
-Finding a list of available attributes and methods of an object.
-"""
+''' function that returns the list
+'''
 
 
 def lookup(obj):
-    """Returns that list of attributes and methods.
-    Args:
-        - obj: object to look into
-    """
-
+    ''' function: lookup()
+    Returns a list object
+    '''
     return dir(obj)
