@@ -1,25 +1,37 @@
 #!/usr/bin/python3
-"""
-This module creates a class
-student with defined attributes
+"""Module 12-student.
+Creates a Student class.
 """
 
 
 class Student:
+    """Class that defines a student.
+    Public attributes:
+        - first_name
+        - last_name
+        - age
+    Public method to_json().
     """
-    This class is defining the attributes for
-    the said class
-    """
+
     def __init__(self, first_name, last_name, age):
-        """
-        This is the instantiation of the attributes
-        """
+        """Initializes the Student instance."""
+
         self.first_name = first_name
         self.last_name = last_name
         self.age = age
 
-    def to_json(self):
+    def to_json(self, attrs=None):
+        """Retrieves a dictionary representation
+        of a Student instance.
+        Args:
+            - attrs: list of attributes
+        Returns: the dict representation of the instance.
         """
-        returns dictionary rep of all instances
-        """
-        return (self.__dict__)
+
+        my_dict = dict()
+        if type(attrs) is list and all(type(x) is str for x in attrs):
+            for x in attrs:
+                if x in self.__dict__:
+                    my_dict.update({x: self.__dict__[x]})
+            return my_dict
+        return self.__dict__.copy()
